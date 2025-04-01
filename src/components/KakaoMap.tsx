@@ -3,7 +3,6 @@
 import { useEffect, useRef } from 'react';
 
 declare global {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   interface Window {
     kakao: any;
   }
@@ -11,10 +10,13 @@ declare global {
 
 export default function KakaoMap() {
   const mapRef = useRef<HTMLDivElement>(null);
+  const kakaoKey = process.env.NEXT_PUBLIC_KAKAO_MAP_API_KEY;
+  console.log(kakaoKey);
 
   useEffect(() => {
     const script = document.createElement('script');
-    script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=5dccf9b0aa90fcf5d160c71e7a1ab78a&autoload=false`;
+    console.log(kakaoKey);
+    script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${kakaoKey}&autoload=false`;
     script.async = true;
 
     script.onload = () => {
