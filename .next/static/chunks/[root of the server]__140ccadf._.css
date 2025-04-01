@@ -599,6 +599,14 @@
     resize: both;
   }
 
+  .list-inside {
+    list-style-position: inside;
+  }
+
+  .list-disc {
+    list-style-type: disc;
+  }
+
   .columns-2 {
     columns: 2;
   }
@@ -698,10 +706,6 @@
 
   .bg-\[\#355865\] {
     background-color: #355865;
-  }
-
-  .bg-\[\#fafafa\] {
-    background-color: #fafafa;
   }
 
   .bg-\[\#fdfafa\] {
