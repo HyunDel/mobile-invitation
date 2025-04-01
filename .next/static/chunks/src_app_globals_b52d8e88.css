@@ -751,6 +751,10 @@
     color: var(--color-pink-500);
   }
 
+  .text-pink-600 {
+    color: var(--color-pink-600);
+  }
+
   .text-red-500 {
     color: var(--color-red-500);
   }

@@ -13,7 +13,6 @@ export default function HomePage() {
       <div className='px-4'>
         {/* 인삿말 / 커플 정보 */}
         <motion.section
-          className='py-6 border-b'
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
@@ -24,7 +23,6 @@ export default function HomePage() {
 
         {/* 가족 소개 */}
         <motion.section
-          className='py-6 border-b'
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
@@ -34,7 +32,6 @@ export default function HomePage() {
         </motion.section>
 
         <motion.section
-          className='py-6 border-b'
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: 'easeOut', delay: 0.15 }}
@@ -45,7 +42,6 @@ export default function HomePage() {
 
         {/* 사진 슬라이드 */}
         <motion.section
-          className='py-6 border-b'
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
@@ -57,13 +53,11 @@ export default function HomePage() {
 
         {/* 오시는 길 */}
         <motion.section
-          className='py-6 border-b'
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: 'easeOut', delay: 0.3 }}
           viewport={{ once: true, amount: 0.3 }}
         >
-          <h2 className='text-xl font-bold mb-4 text-center'>오시는 길</h2>
           <MapSection />
         </motion.section>
       </div>
