@@ -36,7 +36,7 @@ export default function InvitationCard() {
           INVITATION
         </h4>
         <p className='text-base font-medium mt-2'>소중한 분들을 초대합니다</p>
-        <p className='text-sm text-gray-600 mt-3 leading-relaxed'>
+        <p className='text-xs text-gray-600 mt-3 leading-relaxed'>
           두 사람이 사랑으로 만나
           <br />
           진실과 이해로써 하나를 이루려 합니다.
