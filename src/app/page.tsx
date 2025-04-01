@@ -5,7 +5,6 @@ import FamilySection from '../components/FamilySection';
 import MapSection from '../components/MapSection';
 import PhotoGallery from '../components/PhotoGallery';
 import Guestbook from '../components/Guestbook';
-import BottomNav from '../components/BottomNav';
 import WeddingCountdown from '../components/WeddingCountdown';
 
 export default function HomePage() {

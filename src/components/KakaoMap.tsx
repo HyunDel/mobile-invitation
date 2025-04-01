@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 
 declare global {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   interface Window {
     kakao: any;
   }
@@ -26,7 +27,7 @@ export default function KakaoMap() {
 
         const map = new window.kakao.maps.Map(container, options);
 
-        const marker = new window.kakao.maps.Marker({
+        new window.kakao.maps.Marker({
           position: new window.kakao.maps.LatLng(37.5086531, 127.039422),
           map,
           title: '아르베 웨딩홀',

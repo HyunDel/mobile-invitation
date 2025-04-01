@@ -1,5 +1,5 @@
 // components/BottomNav.tsx
-import { Home, Map, Image, MessageCircle } from 'lucide-react';
+import { Home, Map, Image as ImageIcon, MessageCircle } from 'lucide-react';
 import Link from 'next/link';
 
 export default function BottomNav() {
@@ -12,7 +12,7 @@ export default function BottomNav() {
         <Map size={24} />
       </Link>
       <Link href='/invite/photos'>
-        <Image size={24} />
+        <ImageIcon size={24} />
       </Link>
       <Link href='/invite/guestbook'>
         <MessageCircle size={24} />
