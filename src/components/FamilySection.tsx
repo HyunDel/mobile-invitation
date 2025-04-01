@@ -31,14 +31,6 @@ export default function FamilySection() {
           <span className='font-semibold'>지희</span>
         </p>
       </div>
-
-      {/* 연락하기 버튼 */}
-      <div className='mt-6'>
-        <button className='flex items-center justify-center gap-2 w-full max-w-xs mx-auto py-2 px-4 border border-gray-300 rounded-full text-sm text-gray-600 hover:bg-gray-100 transition'>
-          <Phone size={16} />
-          연락하기
-        </button>
-      </div>
     </section>
   );
 }
