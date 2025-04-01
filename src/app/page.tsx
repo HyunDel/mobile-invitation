@@ -4,7 +4,7 @@ import InvitationCard from '../components/InvitationCard';
 import FamilySection from '../components/FamilySection';
 import MapSection from '../components/MapSection';
 import PhotoGallery from '../components/PhotoGallery';
-import Guestbook from '../components/Guestbook';
+import AccountSection from '../components/AccountSection';
 import WeddingCountdown from '../components/WeddingCountdown';
 
 export default function HomePage() {
@@ -59,6 +59,15 @@ export default function HomePage() {
           viewport={{ once: true, amount: 0.3 }}
         >
           <MapSection />
+        </motion.section>
+
+        <motion.section
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: 'easeOut', delay: 0.3 }}
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <AccountSection />
         </motion.section>
       </div>
     </main>
