@@ -1,6 +1,8 @@
 'use client';
 
 import { useState } from 'react';
+import { ChevronDown, ChevronUp, Copy } from 'lucide-react';
+import localFont from 'next/font/local';
 
 interface AccountInfo {
   bank: string;
@@ -15,74 +17,97 @@ const groomAccounts: AccountInfo[] = [
 ];
 
 const brideAccounts: AccountInfo[] = [
-  { bank: '신한은행', name: '김지희', number: '12341234' },
-  { bank: '농협은행', name: '김용백', number: '12341234' },
-  { bank: '농협은행', name: '이인순', number: '12341234' },
+  { bank: '신한은행', name: '김지희', number: '110456960249' },
+  { bank: '광주은행', name: '김용백', number: '81237654321' },
+  { bank: '우리은행', name: '이인순', number: '8765432123111' },
 ];
 
-export default function AccountSection() {
-  const [selected, setSelected] = useState<'groom' | 'bride' | null>(null);
+const pretendard = localFont({
+  src: '../../public/fonts/GowunDodum-Regular.ttf',
+  display: 'swap',
+  weight: '45 920',
+  variable: '--font-pretendard',
+});
+
+export default function AccountAccordionSection() {
+  const [open, setOpen] = useState<'groom' | 'bride' | null>(null);
 
   const handleCopy = (text: string) => {
     navigator.clipboard.writeText(text);
     alert('계좌번호가 복사되었습니다.');
   };
 
-  const renderAccounts = (accounts: AccountInfo[]) =>
-    accounts.map((account, idx) => (
-      <div key={idx} className='mb-4'>
-        <p className='text-sm text-gray-600'>
-          {account.bank} (예금주: {account.name})
-        </p>
-        <div className='flex items-center mt-1'>
-          <input
-            readOnly
-            className='flex-1 border px-2 py-1 rounded bg-gray-50 text-sm'
-            value={account.number}
-          />
-          <button
-            onClick={() => handleCopy(account.number)}
-            className='ml-2 px-3 py-1 bg-gray-200 text-sm rounded hover:bg-gray-300'
-          >
-            복사하기
-          </button>
+  const renderAccounts = (accounts: AccountInfo[]) => (
+    <div className='overflow-hidden transition-all duration-300 text-center'>
+      {accounts.map((acc, i) => (
+        <div
+          key={i}
+          className='flex items-center justify-between px-4 py-3 bg-white border-t text-sm'
+        >
+          {/* 복사 + 예금주 */}
+          <div className='flex items-center gap-2 text-gray-700'>
+            <button onClick={() => handleCopy(acc.number)}>
+              <Copy size={16} className='text-gray-500 hover:text-gray-700' />
+            </button>
+            <span className='font-semibold'>{acc.name}</span>
+          </div>
+
+          {/* 은행 + 번호 */}
+          <div className='text-gray-700 font-mono'>
+            {acc.bank}&nbsp;{acc.number}
+          </div>
         </div>
-      </div>
-    ));
+      ))}
+    </div>
+  );
 
   return (
-    <section className='px-6 py-10 text-center text-gray-800'>
-      <div className='mb-4 text-2xl font-semibold'>💗 마음 전하실 곳</div>
+    <section
+      className={`text-center py-10 px-4 text-gray-800 ${pretendard.className}`}
+    >
+      <h4 className='text-xs tracking-widest text-pink-300 font-semibold mb-1'>
+        ACCOUNT
+      </h4>
+      <h2 className='text-xl font-bold text-pink-300 mb-4'>마음 전하실 곳</h2>
       <p className='text-sm text-gray-600 leading-relaxed mb-6'>
-        멀리서도 축하의 마음을
+        참석이 어려우신 분들을 위해
         <br />
-        전하고 싶으신 분들을 위해
+        계좌번호를 기재하였습니다.
         <br />
-        계좌번호를 안내드립니다.
+        너그러운 마음으로 양해 부탁드립니다.
       </p>
 
-      <div className='flex justify-center gap-3 mb-6'>
-        <button
-          onClick={() => setSelected('groom')}
-          className={`px-4 py-2 rounded text-white text-sm ${
-            selected === 'groom' ? 'bg-[#355865]' : 'bg-gray-300'
-          }`}
-        >
-          신랑측 계좌번호 보기
-        </button>
-        <button
-          onClick={() => setSelected('bride')}
-          className={`px-4 py-2 rounded text-white text-sm ${
-            selected === 'bride' ? 'bg-[#713c44]' : 'bg-gray-300'
-          }`}
-        >
-          신부측 계좌번호 보기
-        </button>
-      </div>
+      {/* 아코디언 */}
+      <div className='space-y-3'>
+        <div className='rounded-xl overflow-hidden border bg-gray-100'>
+          <button
+            className='flex justify-between items-center w-full px-4 py-3 text-gray-700 font-medium'
+            onClick={() => setOpen(open === 'groom' ? null : 'groom')}
+          >
+            <span className='mx-auto'>신랑측</span>
+            {open === 'groom' ? (
+              <ChevronUp size={20} />
+            ) : (
+              <ChevronDown size={20} />
+            )}
+          </button>
+          {open === 'groom' && renderAccounts(groomAccounts)}
+        </div>
 
-      <div className='text-left max-w-xs mx-auto'>
-        {selected === 'groom' && renderAccounts(groomAccounts)}
-        {selected === 'bride' && renderAccounts(brideAccounts)}
+        <div className='rounded-xl overflow-hidden border bg-gray-100'>
+          <button
+            className='flex justify-between items-center w-full px-4 py-3 text-gray-700 font-medium'
+            onClick={() => setOpen(open === 'bride' ? null : 'bride')}
+          >
+            <span className='mx-auto'>신부측</span>
+            {open === 'bride' ? (
+              <ChevronUp size={20} />
+            ) : (
+              <ChevronDown size={20} />
+            )}
+          </button>
+          {open === 'bride' && renderAccounts(brideAccounts)}
+        </div>
       </div>
     </section>
   );

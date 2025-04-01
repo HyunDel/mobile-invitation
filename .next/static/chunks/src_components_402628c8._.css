@@ -1,0 +1,30 @@
+/* [project]/src/components/GowunDodum_Regular-s.p.ttf (static in css) */
+/* embedded static asset "/_next/static/media/GowunDodum_Regular-s.p.d057fef9.ttf" */
+
+/* [project]/src/components/pretendard_6147e1de.module.css [app-client] (css) */
+@font-face {
+  font-family: pretendard;
+  src: url("../media/GowunDodum_Regular-s.p.d057fef9.ttf") format("truetype");
+  font-display: swap;
+  font-weight: 45 920;
+}
+
+@font-face {
+  font-family: pretendard Fallback;
+  src: local(Arial);
+  ascent-override: 121.71%;
+  descent-override: 30.22%;
+  line-gap-override: 0.0%;
+  size-adjust: 95.31%;
+}
+
+.pretendard_6147e1de-module__sL64wW__className {
+  font-family: pretendard, pretendard Fallback;
+}
+
+.pretendard_6147e1de-module__sL64wW__variable {
+  --font-pretendard: "pretendard", "pretendard Fallback";
+}
+
+
+/*# sourceMappingURL=src_components_402628c8._.css.map*/

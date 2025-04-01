@@ -8,6 +8,7 @@ export default {
       },
       fontFamily: {
         script: ['"Dancing Script"', 'cursive'],
+        gowun: ['GowunDodum', 'sans-serif'],
       },
     },
   },

@@ -47,7 +47,6 @@ export default function HomePage() {
           transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
           viewport={{ once: true, amount: 0.3 }}
         >
-          <h2 className='text-xl font-bold mb-2 text-center'>우리의 이야기</h2>
           <PhotoGallery />
         </motion.section>
 
