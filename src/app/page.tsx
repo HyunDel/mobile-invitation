@@ -66,18 +66,6 @@ export default function HomePage() {
           <h2 className='text-xl font-bold mb-4 text-center'>오시는 길</h2>
           <MapSection />
         </motion.section>
-
-        {/* 방명록 */}
-        <motion.section
-          className='py-6'
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: 'easeOut', delay: 0.4 }}
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          <h2 className='text-xl font-bold mb-4 text-center'>축하 메시지</h2>
-          <Guestbook />
-        </motion.section>
       </div>
     </main>
   );
