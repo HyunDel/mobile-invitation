@@ -11,7 +11,7 @@ export default function MapSection() {
     <section className='text-center text-gray-800 px-4 py-10'>
       {/* 제목 */}
       <div className='mb-4'>
-        <h4 className='text-xs tracking-widest text-pink-400 font-semibold mb-1'>
+        <h4 className='text-xs tracking-widest text-pink-300 font-semibold mb-1'>
           LOCATION
         </h4>
         <h2 className='text-xl font-bold'>오시는 길</h2>

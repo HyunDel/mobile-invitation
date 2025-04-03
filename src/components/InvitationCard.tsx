@@ -32,7 +32,7 @@ export default function InvitationCard() {
 
       {/* 초대 인삿말 */}
       <div className='pt-6'>
-        <h4 className='text-s tracking-widest text-pink-400 font-semibold'>
+        <h4 className='text-s tracking-widest text-pink-300 font-semibold'>
           INVITATION
         </h4>
         <p className='text-base font-medium mt-2'>소중한 분들을 초대합니다</p>
