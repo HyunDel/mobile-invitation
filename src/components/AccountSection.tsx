@@ -18,8 +18,8 @@ const groomAccounts: AccountInfo[] = [
 
 const brideAccounts: AccountInfo[] = [
   { bank: '신한은행', name: '김지희', number: '110456960249' },
-  { bank: '광주은행', name: '김용백', number: '81237654321' },
-  { bank: '우리은행', name: '이인순', number: '8765432123111' },
+  { bank: '농협은행', name: '김용백', number: '3513601010313' },
+  { bank: '새마을금고', name: '이인순', number: '9003249491986' },
 ];
 
 const pretendard = localFont({

@@ -424,7 +424,7 @@ function MapSection() {
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                         className: "text-sm text-gray-500 mt-1",
-                        children: "서울특별시 강남구 봉은사로 302 (역삼동 707-34)"
+                        children: "서울특별시 강남구 봉은사로 302 (역삼동 680)"
                     }, void 0, false, {
                         fileName: "[project]/src/components/MapSection.tsx",
                         lineNumber: 23,
@@ -854,14 +854,14 @@ const brideAccounts = [
         number: '110456960249'
     },
     {
-        bank: '광주은행',
+        bank: '농협은행',
         name: '김용백',
-        number: '81237654321'
+        number: '3513601010313'
     },
     {
-        bank: '우리은행',
+        bank: '새마을금고',
         name: '이인순',
-        number: '8765432123111'
+        number: '9003249491986'
     }
 ];
 function AccountAccordionSection() {
