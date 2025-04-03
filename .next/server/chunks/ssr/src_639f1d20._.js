@@ -781,34 +781,34 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$pretend
 ;
 const groomAccounts = [
     {
-        bank: '카카오뱅크',
+        bank: '부산',
         name: '박상현',
-        number: '3333102710968'
+        number: '036121306256'
     },
     {
-        bank: '농협은행',
+        bank: '농협',
         name: '박종석',
         number: '12103956000163'
     },
     {
-        bank: '부산은행',
+        bank: '부산',
         name: '김영희',
         number: '169120083538'
     }
 ];
 const brideAccounts = [
     {
-        bank: '신한은행',
+        bank: '신한',
         name: '김지희',
         number: '110456960249'
     },
     {
-        bank: '농협은행',
+        bank: '농협',
         name: '김용백',
         number: '3513601010313'
     },
     {
-        bank: '새마을금고',
+        bank: '새마을',
         name: '이인순',
         number: '9003249491986'
     }
@@ -844,8 +844,13 @@ function AccountAccordionSection() {
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     className: "font-semibold",
-                                    children: acc.name
-                                }, void 0, false, {
+                                    children: [
+                                        acc.name,
+                                        " (",
+                                        acc.bank,
+                                        ")"
+                                    ]
+                                }, void 0, true, {
                                     fileName: "[project]/src/components/AccountSection.tsx",
                                     lineNumber: 52,
                                     columnNumber: 13
@@ -858,14 +863,10 @@ function AccountAccordionSection() {
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "text-gray-700 font-mono",
-                            children: [
-                                acc.bank,
-                                " ",
-                                acc.number
-                            ]
-                        }, void 0, true, {
+                            children: acc.number
+                        }, void 0, false, {
                             fileName: "[project]/src/components/AccountSection.tsx",
-                            lineNumber: 56,
+                            lineNumber: 58,
                             columnNumber: 11
                         }, this)
                     ]

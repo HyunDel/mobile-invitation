@@ -11,15 +11,15 @@ interface AccountInfo {
 }
 
 const groomAccounts: AccountInfo[] = [
-  { bank: '카카오뱅크', name: '박상현', number: '3333102710968' },
-  { bank: '농협은행', name: '박종석', number: '12103956000163' },
-  { bank: '부산은행', name: '김영희', number: '169120083538' },
+  { bank: '부산', name: '박상현', number: '036121306256' },
+  { bank: '농협', name: '박종석', number: '12103956000163' },
+  { bank: '부산', name: '김영희', number: '169120083538' },
 ];
 
 const brideAccounts: AccountInfo[] = [
-  { bank: '신한은행', name: '김지희', number: '110456960249' },
-  { bank: '농협은행', name: '김용백', number: '3513601010313' },
-  { bank: '새마을금고', name: '이인순', number: '9003249491986' },
+  { bank: '신한', name: '김지희', number: '110456960249' },
+  { bank: '농협', name: '김용백', number: '3513601010313' },
+  { bank: '새마을', name: '이인순', number: '9003249491986' },
 ];
 
 const pretendard = localFont({
@@ -49,13 +49,13 @@ export default function AccountAccordionSection() {
             <button onClick={() => handleCopy(acc.number)}>
               <Copy size={16} className='text-gray-500 hover:text-gray-700' />
             </button>
-            <span className='font-semibold'>{acc.name}</span>
+            <span className='font-semibold'>
+              {acc.name} ({acc.bank})
+            </span>
           </div>
 
           {/* 은행 + 번호 */}
-          <div className='text-gray-700 font-mono'>
-            {acc.bank}&nbsp;{acc.number}
-          </div>
+          <div className='text-gray-700 font-mono'>{acc.number}</div>
         </div>
       ))}
     </div>
