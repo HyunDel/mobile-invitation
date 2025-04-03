@@ -21,7 +21,7 @@ export default function MapSection() {
       <div className='mb-6'>
         <p className='text-base font-medium'>아르베웨딩홀</p>
         <p className='text-sm text-gray-500 mt-1'>
-          서울특별시 강남구 봉은사로 302 (역삼동 707-34)
+          서울특별시 강남구 봉은사로 302 (역삼동 680)
         </p>
       </div>
 
