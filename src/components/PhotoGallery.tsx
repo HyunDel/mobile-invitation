@@ -10,11 +10,6 @@ const photos = [
   '/images/12345.jpeg',
   '/images/123456.jpeg',
   '/images/1234567.jpeg',
-  '/images/1234567.jpeg',
-  '/images/1234567.jpeg',
-  '/images/1234567.jpeg',
-  '/images/1234567.jpeg',
-  '/images/1234567.jpeg',
   '/images/wedding.jpg',
 ];
 

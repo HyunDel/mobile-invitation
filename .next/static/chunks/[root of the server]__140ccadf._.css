@@ -87,13 +87,6 @@
 
 
 /* [project]/src/app/globals.css [app-client] (css) */
-@font-face {
-  font-family: GowunDodum;
-  src: url("/fonts/GowunDodum-Regular.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
 @layer theme, base, components, utilities;
 
 @layer theme {

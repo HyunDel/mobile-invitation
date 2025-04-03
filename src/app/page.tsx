@@ -30,7 +30,7 @@ export default function HomePage() {
         >
           <FamilySection />
         </motion.section>
-
+        {/* 웨딩 날짜 및 캘린더 */}
         <motion.section
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -40,7 +40,7 @@ export default function HomePage() {
           <WeddingCountdown />
         </motion.section>
 
-        {/* 사진 슬라이드 */}
+        {/* 사진 */}
         <motion.section
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -60,6 +60,7 @@ export default function HomePage() {
           <MapSection />
         </motion.section>
 
+        {/* 계좌 번호 */}
         <motion.section
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
