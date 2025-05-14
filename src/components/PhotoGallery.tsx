@@ -110,8 +110,12 @@ export default function PhotoGalleryMasonry() {
         <div
           className='fixed inset-0 z-50 bg-black bg-opacity-80 flex items-center justify-center'
           onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
+          onTouchMove={(e) => {
+            touchEndX.current = e.touches[0].clientX;
+            e.preventDefault(); // 수직 스크롤 방지
+          }}
           onTouchEnd={handleTouchEnd}
+          style={{ touchAction: 'none' }} // 수직, 수평 스크롤 모두 막음 → 우리가 제어
         >
           <button
             className='absolute top-4 right-4 text-white hover:text-pink-300 transition'
@@ -140,6 +144,7 @@ export default function PhotoGalleryMasonry() {
               width={1200}
               height={800}
               className='w-full h-auto rounded-md'
+              draggable={false}
             />
           </div>
         </div>

@@ -751,8 +751,14 @@ function PhotoGalleryMasonry() {
             selectedIndex !== null && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "fixed inset-0 z-50 bg-black bg-opacity-80 flex items-center justify-center",
                 onTouchStart: handleTouchStart,
-                onTouchMove: handleTouchMove,
+                onTouchMove: (e)=>{
+                    touchEndX.current = e.touches[0].clientX;
+                    e.preventDefault(); // 수직 스크롤 방지
+                },
                 onTouchEnd: handleTouchEnd,
+                style: {
+                    touchAction: 'none'
+                },
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         className: "absolute top-4 right-4 text-white hover:text-pink-300 transition",
@@ -761,12 +767,12 @@ function PhotoGalleryMasonry() {
                             size: 28
                         }, void 0, false, {
                             fileName: "[project]/src/components/PhotoGallery.tsx",
-                            lineNumber: 120,
+                            lineNumber: 124,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/PhotoGallery.tsx",
-                        lineNumber: 116,
+                        lineNumber: 120,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -776,12 +782,12 @@ function PhotoGalleryMasonry() {
                             size: 36
                         }, void 0, false, {
                             fileName: "[project]/src/components/PhotoGallery.tsx",
-                            lineNumber: 127,
+                            lineNumber: 131,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/PhotoGallery.tsx",
-                        lineNumber: 123,
+                        lineNumber: 127,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -791,12 +797,12 @@ function PhotoGalleryMasonry() {
                             size: 36
                         }, void 0, false, {
                             fileName: "[project]/src/components/PhotoGallery.tsx",
-                            lineNumber: 133,
+                            lineNumber: 137,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/PhotoGallery.tsx",
-                        lineNumber: 129,
+                        lineNumber: 133,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -806,15 +812,16 @@ function PhotoGalleryMasonry() {
                             alt: "확대 이미지",
                             width: 1200,
                             height: 800,
-                            className: "w-full h-auto rounded-md"
+                            className: "w-full h-auto rounded-md",
+                            draggable: false
                         }, void 0, false, {
                             fileName: "[project]/src/components/PhotoGallery.tsx",
-                            lineNumber: 137,
+                            lineNumber: 141,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/PhotoGallery.tsx",
-                        lineNumber: 136,
+                        lineNumber: 140,
                         columnNumber: 11
                     }, this)
                 ]
