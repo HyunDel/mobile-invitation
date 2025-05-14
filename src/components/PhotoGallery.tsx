@@ -2,7 +2,13 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { ChevronDown, ChevronUp, X } from 'lucide-react';
+import {
+  ChevronDown,
+  ChevronUp,
+  ChevronLeft,
+  ChevronRight,
+  X,
+} from 'lucide-react';
 
 const photos = [
   '/images/123.jpeg',
@@ -15,9 +21,21 @@ const photos = [
 
 export default function PhotoGalleryMasonry() {
   const [expanded, setExpanded] = useState(false);
-  const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   const displayedPhotos = expanded ? photos : photos.slice(0, 6);
+
+  const handlePrev = () => {
+    if (selectedIndex !== null) {
+      setSelectedIndex((selectedIndex - 1 + photos.length) % photos.length);
+    }
+  };
+
+  const handleNext = () => {
+    if (selectedIndex !== null) {
+      setSelectedIndex((selectedIndex + 1) % photos.length);
+    }
+  };
 
   return (
     <section className='text-center text-gray-800 px-4 py-10 relative z-0'>
@@ -35,7 +53,7 @@ export default function PhotoGalleryMasonry() {
           <div
             key={idx}
             className='overflow-hidden rounded-md break-inside-avoid cursor-pointer'
-            onClick={() => setSelectedPhoto(src)}
+            onClick={() => setSelectedIndex(idx)}
           >
             <Image
               src={src}
@@ -67,18 +85,34 @@ export default function PhotoGalleryMasonry() {
         </button>
       )}
 
-      {/* 모달 */}
-      {selectedPhoto && (
+      {/* 모달 (슬라이드) */}
+      {selectedIndex !== null && (
         <div className='fixed inset-0 z-50 bg-black bg-opacity-80 flex items-center justify-center'>
+          <button
+            className='absolute top-4 right-4 text-white hover:text-pink-300 transition'
+            onClick={() => setSelectedIndex(null)}
+          >
+            <X size={28} />
+          </button>
+
+          {/* 좌우 버튼 */}
+          <button
+            onClick={handlePrev}
+            className='absolute left-4 md:left-10 text-white hover:text-pink-300 transition'
+          >
+            <ChevronLeft size={36} />
+          </button>
+          <button
+            onClick={handleNext}
+            className='absolute right-4 md:right-10 text-white hover:text-pink-300 transition'
+          >
+            <ChevronRight size={36} />
+          </button>
+
+          {/* 이미지 표시 */}
           <div className='relative max-w-3xl w-full px-4'>
-            <button
-              className='absolute top-4 right-4 text-white hover:text-pink-300 transition'
-              onClick={() => setSelectedPhoto(null)}
-            >
-              <X size={24} />
-            </button>
             <Image
-              src={selectedPhoto}
+              src={photos[selectedIndex]}
               alt='확대 이미지'
               width={1200}
               height={800}
