@@ -15,6 +15,9 @@ const photos = [
   '/images/test2.jpeg',
   '/images/test3.jpeg',
   '/images/test4.jpeg',
+  '/images/1234.jpeg',
+  '/images/12345.jpeg',
+  '/images/123456.jpeg',
 ];
 
 export default function PhotoGalleryMasonry() {
