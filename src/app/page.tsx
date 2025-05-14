@@ -6,6 +6,7 @@ import MapSection from '../components/MapSection';
 import PhotoGallery from '../components/PhotoGallery';
 import AccountSection from '../components/AccountSection';
 import WeddingCountdown from '../components/WeddingCountdown';
+import BusNoticeSection from '../components/BusNoticeSection';
 
 export default function HomePage() {
   return (
@@ -68,6 +69,15 @@ export default function HomePage() {
           viewport={{ once: true, amount: 0.3 }}
         >
           <AccountSection />
+        </motion.section>
+
+        <motion.section
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: 'easeOut', delay: 0.3 }}
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <BusNoticeSection />
         </motion.section>
       </div>
     </main>
