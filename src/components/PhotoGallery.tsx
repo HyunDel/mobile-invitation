@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import { ChevronDown, ChevronUp, X } from 'lucide-react';
 
 const photos = [
   '/images/123.jpeg',
@@ -15,11 +15,12 @@ const photos = [
 
 export default function PhotoGalleryMasonry() {
   const [expanded, setExpanded] = useState(false);
+  const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null);
 
   const displayedPhotos = expanded ? photos : photos.slice(0, 6);
 
   return (
-    <section className='text-center text-gray-800 px-4 py-10'>
+    <section className='text-center text-gray-800 px-4 py-10 relative z-0'>
       {/* 제목 */}
       <div className='mb-6'>
         <h4 className='text-xs tracking-widest text-pink-300 font-semibold mb-1'>
@@ -33,7 +34,8 @@ export default function PhotoGalleryMasonry() {
         {displayedPhotos.map((src, idx) => (
           <div
             key={idx}
-            className='overflow-hidden rounded-md break-inside-avoid'
+            className='overflow-hidden rounded-md break-inside-avoid cursor-pointer'
+            onClick={() => setSelectedPhoto(src)}
           >
             <Image
               src={src}
@@ -46,6 +48,7 @@ export default function PhotoGalleryMasonry() {
           </div>
         ))}
       </div>
+
       {/* 접기/펴기 버튼 */}
       {photos.length > 6 && (
         <button
@@ -62,6 +65,27 @@ export default function PhotoGalleryMasonry() {
             </>
           )}
         </button>
+      )}
+
+      {/* 모달 */}
+      {selectedPhoto && (
+        <div className='fixed inset-0 z-50 bg-black bg-opacity-80 flex items-center justify-center'>
+          <div className='relative max-w-3xl w-full px-4'>
+            <button
+              className='absolute top-4 right-4 text-white hover:text-pink-300 transition'
+              onClick={() => setSelectedPhoto(null)}
+            >
+              <X size={24} />
+            </button>
+            <Image
+              src={selectedPhoto}
+              alt='확대 이미지'
+              width={1200}
+              height={800}
+              className='w-full h-auto rounded-md'
+            />
+          </div>
+        </div>
       )}
     </section>
   );
