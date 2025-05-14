@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Image from 'next/image';
 import {
   ChevronDown,
@@ -21,6 +21,9 @@ export default function PhotoGalleryMasonry() {
   const [expanded, setExpanded] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+
   const displayedPhotos = expanded ? photos : photos.slice(0, 6);
 
   const handlePrev = () => {
@@ -32,6 +35,25 @@ export default function PhotoGalleryMasonry() {
   const handleNext = () => {
     if (selectedIndex !== null) {
       setSelectedIndex((selectedIndex + 1) % photos.length);
+    }
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const diff = touchStartX.current - touchEndX.current;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        handleNext(); // Swipe left → next
+      } else {
+        handlePrev(); // Swipe right → prev
+      }
     }
   };
 
@@ -85,7 +107,12 @@ export default function PhotoGalleryMasonry() {
 
       {/* 모달 (슬라이드) */}
       {selectedIndex !== null && (
-        <div className='fixed inset-0 z-50 bg-black bg-opacity-80 flex items-center justify-center'>
+        <div
+          className='fixed inset-0 z-50 bg-black bg-opacity-80 flex items-center justify-center'
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
           <button
             className='absolute top-4 right-4 text-white hover:text-pink-300 transition'
             onClick={() => setSelectedIndex(null)}
@@ -93,7 +120,6 @@ export default function PhotoGalleryMasonry() {
             <X size={28} />
           </button>
 
-          {/* 좌우 버튼 */}
           <button
             onClick={handlePrev}
             className='absolute left-4 md:left-10 text-white hover:text-pink-300 transition'
@@ -107,7 +133,6 @@ export default function PhotoGalleryMasonry() {
             <ChevronRight size={36} />
           </button>
 
-          {/* 이미지 표시 */}
           <div className='relative max-w-3xl w-full px-4'>
             <Image
               src={photos[selectedIndex]}
