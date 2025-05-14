@@ -2,27 +2,26 @@
 
 const BusNoticeSection = () => {
   return (
-    <div style={{ textAlign: 'center', padding: '2rem 1rem' }}>
-      <h3
-        style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '0.5rem' }}
-      >
-        🚌 단체 버스 안내
-      </h3>
-      <p style={{ marginBottom: '0.3rem' }}>
+    <div className='pt-6 text-center'>
+      <h4 className='text-s tracking-widest text-black-300 font-semibold mb-2'>
+        🚌 대절 버스 안내
+      </h4>
+      <p className='text-base font-medium'>
         멀리서 찾아오시는 분들의 편의를 위해
         <br />
-        예식장 ↔ 지정 장소 간 단체 버스를 준비하였습니다.
+        예식장↔지정 장소 간 대절 버스를 준비하였습니다.
       </p>
-      <p style={{ marginBottom: '0.3rem' }}>
-        <strong>탑승장소</strong> : 태양광주차장(서구 치평동 1154번지 JS웨딩홀
-        옆)
+      <p className='text-sm text-gray-700 mt-3 leading-relaxed'>
+        <span className='font-semibold'>탑승장소</span> : 태양광주차장
+        (광주광역시 서구 치평동 1154번지 JS웨딩홀 옆)
         <br />
-        <strong>운행회사</strong> : 송광관광버스
+        <span className='font-semibold'>운행회사</span> : 송광관광버스
         <br />
-        <strong>출발시간</strong> : 오후 8시 30분
+        <span className='font-semibold'>출발시간</span> : 오전 8시 30분
       </p>
-      <p style={{ fontSize: '0.9rem', color: '#666' }}>
-        ※ 탑승 인원 파악을 위해 사전 연락 부탁드립니다.
+      <p className='text-xs text-gray-500 mt-2'>
+        ※ 전세버스를 이용하실 분들은 탑승인원 파악을 위해 사전에 연락주시면
+        감사하겠습니다
       </p>
     </div>
   );
