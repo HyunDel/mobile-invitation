@@ -11,12 +11,10 @@ import {
 } from 'lucide-react';
 
 const photos = [
-  '/images/123.jpeg',
-  '/images/1234.jpeg',
-  '/images/12345.jpeg',
-  '/images/123456.jpeg',
-  '/images/1234567.jpeg',
-  '/images/wedding.jpg',
+  '/images/main1.jpeg',
+  '/images/test2.jpeg',
+  '/images/test3.jpeg',
+  '/images/test4.jpeg',
 ];
 
 export default function PhotoGalleryMasonry() {

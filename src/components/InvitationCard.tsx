@@ -12,7 +12,7 @@ export default function InvitationCard() {
       {/* 커플 사진 */}
       <div className='my-6'>
         <Image
-          src='/images/123.jpeg'
+          src='/images/main1.jpeg'
           alt='신랑 신부'
           width={400}
           height={500}

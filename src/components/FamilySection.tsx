@@ -10,7 +10,7 @@ export default function FamilySection() {
       {/* 커플 사진 */}
       <div className='mb-6'>
         <Image
-          src='/images/wedding.jpg' // 실제 이미지 경로로 교체
+          src='/images/test1.jpeg' // 실제 이미지 경로로 교체
           alt='신랑 신부'
           width={400}
           height={300}
