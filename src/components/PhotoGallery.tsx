@@ -4,16 +4,7 @@ import { useState, useRef } from 'react';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 
-const photos = [
-  '/images/main1.jpeg',
-  '/images/test2.jpeg',
-  '/images/test2.jpeg',
-  '/images/test2.jpeg',
-  '/images/test2.jpeg',
-  '/images/test2.jpeg',
-  '/images/test2.jpeg',
-  '/images/test2.jpeg',
-];
+const photos = ['/images/main1.jpeg', '/images/test2.jpeg'];
 
 export default function PhotoGalleryGrid() {
   const [expanded, setExpanded] = useState(false);
