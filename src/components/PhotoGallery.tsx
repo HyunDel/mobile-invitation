@@ -13,12 +13,6 @@ const photos = [
   '/images/test2.jpeg',
   '/images/test2.jpeg',
   '/images/test2.jpeg',
-  '/images/test2.jpeg',
-  '/images/test2.jpeg',
-  '/images/test2.jpeg',
-  '/images/test2.jpeg',
-  '/images/test2.jpeg',
-  '/images/test2.jpeg',
 ];
 
 export default function PhotoGalleryGrid() {
