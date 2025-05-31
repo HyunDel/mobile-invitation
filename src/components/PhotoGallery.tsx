@@ -2,9 +2,25 @@
 
 import { useState, useRef } from 'react';
 import Image from 'next/image';
-import { ChevronLeft, ChevronRight, X } from 'lucide-react';
+import {
+  ChevronDown,
+  ChevronUp,
+  ChevronLeft,
+  ChevronRight,
+  X,
+} from 'lucide-react';
 
-const photos = ['/images/main1.jpeg', '/images/test2.jpeg'];
+const photos = [
+  '/images/main1.jpeg',
+  '/images/test2.jpeg',
+  '/images/test3.jpeg',
+  '/images/test4.jpeg',
+  '/images/1234.jpeg',
+  '/images/12345.jpeg',
+  '/images/123456.jpeg',
+  '/images/test6.jpeg',
+  '/images/test7.jpeg',
+];
 
 export default function PhotoGalleryGrid() {
   const [expanded, setExpanded] = useState(false);
@@ -13,7 +29,7 @@ export default function PhotoGalleryGrid() {
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
 
-  const displayedPhotos = expanded ? photos : photos.slice(0, 9); // 기본 9개 (3x3)
+  const displayedPhotos = expanded ? photos : photos.slice(0, 9); // 3x3 기본 출력
 
   const handlePrev = () => {
     if (selectedIndex !== null) {
@@ -31,32 +47,25 @@ export default function PhotoGalleryGrid() {
     touchStartX.current = e.touches[0].clientX;
   };
 
-  const handleTouchMove = (e: React.TouchEvent) => {
-    touchEndX.current = e.touches[0].clientX;
-  };
-
   const handleTouchEnd = () => {
     const diff = touchStartX.current - touchEndX.current;
     if (Math.abs(diff) > 50) {
-      if (diff > 0) {
-        handleNext();
-      } else {
-        handlePrev();
-      }
+      if (diff > 0) handleNext();
+      else handlePrev();
     }
   };
 
   return (
-    <section className='text-center text-gray-800 px-4 py-10 relative z-0'>
+    <section className='text-center text-gray-800 px-4 py-10'>
       {/* 제목 */}
       <div className='mb-6'>
         <h4 className='text-xs tracking-widest text-pink-300 font-semibold mb-1'>
           PHOTO GALLERY
         </h4>
-        <h2 className='text-xl font-bold'>갤러리</h2>
+        <h2 className='text-xl font-bold'>PHOTO GALLERY</h2>
       </div>
 
-      {/* 그리드 구조 */}
+      {/* 갤러리 그리드 */}
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3'>
         {displayedPhotos.map((src, idx) => (
           <div
@@ -67,15 +76,17 @@ export default function PhotoGalleryGrid() {
             <Image
               src={src}
               alt={`갤러리 이미지 ${idx + 1}`}
-              width={500}
-              height={500}
-              className='object-cover w-full h-auto rounded-md'
+              width={600}
+              height={400}
+              sizes='(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw'
+              className='w-full h-auto object-cover rounded-md'
+              priority={idx < 3} // 초기 3개 우선 로드
             />
           </div>
         ))}
       </div>
 
-      {/* 더보기/접기 버튼 */}
+      {/* 더보기 버튼 */}
       {photos.length > 9 && (
         <button
           onClick={() => setExpanded(!expanded)}
@@ -90,10 +101,6 @@ export default function PhotoGalleryGrid() {
         <div
           className='fixed inset-0 z-50 bg-black bg-opacity-80 flex items-center justify-center'
           onTouchStart={handleTouchStart}
-          onTouchMove={(e) => {
-            touchEndX.current = e.touches[0].clientX;
-            e.preventDefault();
-          }}
           onTouchEnd={handleTouchEnd}
           style={{ touchAction: 'none' }}
         >
