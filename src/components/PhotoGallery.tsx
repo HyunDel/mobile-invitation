@@ -70,7 +70,6 @@ export default function PhotoGalleryGrid() {
               width={500}
               height={500}
               className='object-cover w-full h-auto rounded-md'
-              layout='responsive'
             />
           </div>
         ))}
