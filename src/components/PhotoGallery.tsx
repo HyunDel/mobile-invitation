@@ -11,15 +11,19 @@ import {
 } from 'lucide-react';
 
 const photos = [
-  '/images/main1.jpeg',
-  '/images/test2.jpeg',
-  '/images/test3.jpeg',
-  '/images/test4.jpeg',
-  '/images/1234.jpeg',
-  '/images/12345.jpeg',
-  '/images/123456.jpeg',
-  '/images/test6.jpeg',
-  '/images/test7.jpeg',
+  '/images/1.jpg',
+  '/images/2.jpg',
+  '/images/3.jpg',
+  '/images/4.jpg',
+  '/images/5.jpg',
+  '/images/7.jpg',
+  '/images/8.jpg',
+  '/images/9.jpg',
+  '/images/10.jpg',
+  '/images/11.jpg',
+  '/images/12.jpg',
+  '/images/14.jpg',
+  '/images/15.jpg',
 ];
 
 export default function PhotoGalleryGrid() {
