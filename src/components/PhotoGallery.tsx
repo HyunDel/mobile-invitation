@@ -31,7 +31,7 @@ export default function PhotoGalleryGrid() {
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
 
-  const displayedPhotos = expanded ? photos : photos.slice(0, 9);
+  const displayedPhotos = expanded ? photos : photos.slice(0, 8);
 
   const handlePrev = () => {
     if (selectedIndex !== null) {
@@ -90,7 +90,7 @@ export default function PhotoGalleryGrid() {
         <h2 className='text-xl font-bold'>PHOTO GALLERY</h2>
       </div>
 
-      <div className='grid grid-cols-2 sm:grid-cols-3 gap-3'>
+      <div className='grid grid-cols-2 gap-3'>
         {displayedPhotos.map((src, idx) => (
           <div
             key={idx}
