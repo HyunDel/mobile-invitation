@@ -55,11 +55,17 @@ export default function PhotoGalleryGrid() {
   };
 
   const handleTouchEnd = () => {
+    if (scale > 1) return; // 🔒 확대 중일 땐 스와이프 금지
+
     const diff = touchStartX.current - touchEndX.current;
     if (Math.abs(diff) > 50) {
       if (diff > 0) handleNext();
       else handlePrev();
     }
+
+    // 초기화
+    touchStartX.current = 0;
+    touchEndX.current = 0;
   };
 
   // 확대/축소를 위한 휠 이벤트
