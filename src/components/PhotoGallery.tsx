@@ -46,21 +46,38 @@ export default function PhotoGalleryGrid() {
     }
   };
 
+  const isPinch = useRef(false);
+  const pinchTimeout = useRef<NodeJS.Timeout | null>(null);
+
+  // 터치 시작
   const handleTouchStart = (e: React.TouchEvent) => {
     if (e.touches.length === 1) {
-      touchStartX.current = e.touches[0].clientX;
+      isPinch.current = false;
+
+      // 150ms 안에 두 번째 손가락이 추가되면 pinch로 간주
+      pinchTimeout.current = setTimeout(() => {
+        if (e.touches.length === 1) {
+          touchStartX.current = e.touches[0].clientX;
+        }
+      }, 150);
+    }
+
+    if (e.touches.length >= 2) {
+      isPinch.current = true;
+      if (pinchTimeout.current) clearTimeout(pinchTimeout.current);
     }
   };
 
+  // 터치 이동
   const handleTouchMove = (e: React.TouchEvent) => {
-    if (e.touches.length === 1) {
+    if (e.touches.length === 1 && !isPinch.current) {
       touchEndX.current = e.touches[0].clientX;
     }
   };
 
+  // 터치 종료
   const handleTouchEnd = () => {
-    // 확대된 상태에선 스와이프 금지
-    if (scale > 1.01) return;
+    if (isPinch.current || scale > 1.01) return;
 
     const diff = touchStartX.current - touchEndX.current;
     if (Math.abs(diff) > 50) {
