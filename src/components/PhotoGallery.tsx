@@ -1,14 +1,8 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
-import {
-  ChevronDown,
-  ChevronUp,
-  ChevronLeft,
-  ChevronRight,
-  X,
-} from 'lucide-react';
+import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 
 const photos = [
   '/images/1.jpg',
@@ -29,26 +23,34 @@ const photos = [
 export default function PhotoGalleryGrid() {
   const [expanded, setExpanded] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [scale, setScale] = useState(1);
+  const zoomRef = useRef<HTMLDivElement | null>(null);
 
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
 
-  const displayedPhotos = expanded ? photos : photos.slice(0, 9); // 3x3 기본 출력
+  const displayedPhotos = expanded ? photos : photos.slice(0, 9);
 
   const handlePrev = () => {
     if (selectedIndex !== null) {
       setSelectedIndex((selectedIndex - 1 + photos.length) % photos.length);
+      setScale(1);
     }
   };
 
   const handleNext = () => {
     if (selectedIndex !== null) {
       setSelectedIndex((selectedIndex + 1) % photos.length);
+      setScale(1);
     }
   };
 
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
   };
 
   const handleTouchEnd = () => {
@@ -59,9 +61,26 @@ export default function PhotoGalleryGrid() {
     }
   };
 
+  // 확대/축소를 위한 휠 이벤트
+  useEffect(() => {
+    const handleWheel = (e: WheelEvent) => {
+      if (!zoomRef.current) return;
+      e.preventDefault();
+      const delta = -e.deltaY / 500;
+      setScale((prev) => Math.min(Math.max(1, prev + delta), 3));
+    };
+
+    const currentRef = zoomRef.current;
+    if (currentRef)
+      currentRef.addEventListener('wheel', handleWheel, { passive: false });
+
+    return () => {
+      if (currentRef) currentRef.removeEventListener('wheel', handleWheel);
+    };
+  }, []);
+
   return (
     <section className='text-center text-gray-800 px-4 py-10'>
-      {/* 제목 */}
       <div className='mb-6'>
         <h4 className='text-xs tracking-widest text-pink-300 font-semibold mb-1'>
           PHOTO GALLERY
@@ -69,13 +88,15 @@ export default function PhotoGalleryGrid() {
         <h2 className='text-xl font-bold'>PHOTO GALLERY</h2>
       </div>
 
-      {/* 갤러리 그리드 */}
-      <div className='grid grid-cols-3 gap-3'>
+      <div className='grid grid-cols-2 sm:grid-cols-3 gap-3'>
         {displayedPhotos.map((src, idx) => (
           <div
             key={idx}
             className='overflow-hidden rounded-md cursor-pointer'
-            onClick={() => setSelectedIndex(idx)}
+            onClick={() => {
+              setSelectedIndex(idx);
+              setScale(1);
+            }}
           >
             <Image
               src={src}
@@ -84,13 +105,12 @@ export default function PhotoGalleryGrid() {
               height={400}
               sizes='(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw'
               className='w-full h-auto object-cover rounded-md'
-              priority={idx < 3} // 초기 3개 우선 로드
+              priority={idx < 3}
             />
           </div>
         ))}
       </div>
 
-      {/* 더보기 버튼 */}
       {photos.length > 9 && (
         <button
           onClick={() => setExpanded(!expanded)}
@@ -100,13 +120,12 @@ export default function PhotoGalleryGrid() {
         </button>
       )}
 
-      {/* 모달 */}
       {selectedIndex !== null && (
         <div
-          className='fixed inset-0 z-50 bg-black bg-opacity-80 flex items-center justify-center'
+          className='fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center'
           onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
-          style={{ touchAction: 'none' }}
         >
           <button
             className='absolute top-4 right-4 text-white hover:text-pink-300'
@@ -121,6 +140,7 @@ export default function PhotoGalleryGrid() {
           >
             <ChevronLeft size={36} />
           </button>
+
           <button
             onClick={handleNext}
             className='absolute right-4 md:right-10 text-white hover:text-pink-300'
@@ -128,13 +148,20 @@ export default function PhotoGalleryGrid() {
             <ChevronRight size={36} />
           </button>
 
-          <div className='relative max-w-3xl w-full px-4'>
+          <div
+            ref={zoomRef}
+            className='zoom-container relative max-w-3xl w-full px-4'
+            style={{
+              transform: `scale(${scale})`,
+              transition: 'transform 0.2s ease',
+            }}
+          >
             <Image
               src={photos[selectedIndex]}
               alt='확대 이미지'
               width={1200}
               height={800}
-              className='w-full h-auto rounded-md'
+              className='w-full h-auto rounded-md pointer-events-none select-none'
               draggable={false}
             />
           </div>
