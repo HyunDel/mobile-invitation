@@ -43,7 +43,7 @@ function InvitationCard() {
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "my-6",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                    src: "/images/6.jpg",
+                    src: "/images/123.jpeg",
                     alt: "신랑 신부",
                     width: 400,
                     height: 500,
@@ -667,6 +667,7 @@ const photos = [
     '/images/3.jpg',
     '/images/4.jpg',
     '/images/5.jpg',
+    '/images/6.jpg',
     '/images/7.jpg',
     '/images/8.jpg',
     '/images/9.jpg',
@@ -674,7 +675,8 @@ const photos = [
     '/images/11.jpg',
     '/images/12.jpg',
     '/images/14.jpg',
-    '/images/15.jpg'
+    '/images/15.jpg',
+    '/images/17.jpeg'
 ];
 function PhotoGalleryGrid() {
     _s();
@@ -745,7 +747,7 @@ function PhotoGalleryGrid() {
                         children: "PHOTO GALLERY"
                     }, void 0, false, {
                         fileName: "[project]/src/components/PhotoGallery.tsx",
-                        lineNumber: 85,
+                        lineNumber: 87,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -753,13 +755,13 @@ function PhotoGalleryGrid() {
                         children: "PHOTO GALLERY"
                     }, void 0, false, {
                         fileName: "[project]/src/components/PhotoGallery.tsx",
-                        lineNumber: 88,
+                        lineNumber: 90,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/PhotoGallery.tsx",
-                lineNumber: 84,
+                lineNumber: 86,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -780,17 +782,17 @@ function PhotoGalleryGrid() {
                             priority: idx < 3
                         }, void 0, false, {
                             fileName: "[project]/src/components/PhotoGallery.tsx",
-                            lineNumber: 101,
+                            lineNumber: 103,
                             columnNumber: 13
                         }, this)
                     }, idx, false, {
                         fileName: "[project]/src/components/PhotoGallery.tsx",
-                        lineNumber: 93,
+                        lineNumber: 95,
                         columnNumber: 11
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/src/components/PhotoGallery.tsx",
-                lineNumber: 91,
+                lineNumber: 93,
                 columnNumber: 7
             }, this),
             photos.length > 9 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -802,7 +804,7 @@ function PhotoGalleryGrid() {
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/PhotoGallery.tsx",
-                lineNumber: 115,
+                lineNumber: 117,
                 columnNumber: 9
             }, this),
             selectedIndex !== null && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -818,12 +820,12 @@ function PhotoGalleryGrid() {
                             size: 28
                         }, void 0, false, {
                             fileName: "[project]/src/components/PhotoGallery.tsx",
-                            lineNumber: 134,
+                            lineNumber: 136,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/PhotoGallery.tsx",
-                        lineNumber: 130,
+                        lineNumber: 132,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -833,12 +835,12 @@ function PhotoGalleryGrid() {
                             size: 36
                         }, void 0, false, {
                             fileName: "[project]/src/components/PhotoGallery.tsx",
-                            lineNumber: 141,
+                            lineNumber: 143,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/PhotoGallery.tsx",
-                        lineNumber: 137,
+                        lineNumber: 139,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -848,12 +850,12 @@ function PhotoGalleryGrid() {
                             size: 36
                         }, void 0, false, {
                             fileName: "[project]/src/components/PhotoGallery.tsx",
-                            lineNumber: 148,
+                            lineNumber: 150,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/PhotoGallery.tsx",
-                        lineNumber: 144,
+                        lineNumber: 146,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -872,24 +874,24 @@ function PhotoGalleryGrid() {
                             draggable: false
                         }, void 0, false, {
                             fileName: "[project]/src/components/PhotoGallery.tsx",
-                            lineNumber: 159,
+                            lineNumber: 161,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/PhotoGallery.tsx",
-                        lineNumber: 151,
+                        lineNumber: 153,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/PhotoGallery.tsx",
-                lineNumber: 124,
+                lineNumber: 126,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/PhotoGallery.tsx",
-        lineNumber: 83,
+        lineNumber: 85,
         columnNumber: 5
     }, this);
 }
