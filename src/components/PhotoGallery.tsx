@@ -47,15 +47,20 @@ export default function PhotoGalleryGrid() {
   };
 
   const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
+    if (e.touches.length === 1) {
+      touchStartX.current = e.touches[0].clientX;
+    }
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    touchEndX.current = e.touches[0].clientX;
+    if (e.touches.length === 1) {
+      touchEndX.current = e.touches[0].clientX;
+    }
   };
 
   const handleTouchEnd = () => {
-    if (scale > 1) return; // 🔒 확대 중일 땐 스와이프 금지
+    // 확대된 상태에선 스와이프 금지
+    if (scale > 1.01) return;
 
     const diff = touchStartX.current - touchEndX.current;
     if (Math.abs(diff) > 50) {
@@ -63,7 +68,6 @@ export default function PhotoGalleryGrid() {
       else handlePrev();
     }
 
-    // 초기화
     touchStartX.current = 0;
     touchEndX.current = 0;
   };
