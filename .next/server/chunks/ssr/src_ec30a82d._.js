@@ -658,20 +658,38 @@ function PhotoGalleryGrid() {
             setScale(1);
         }
     };
+    const isPinch = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(false);
+    const pinchTimeout = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(null);
+    // 터치 시작
     const handleTouchStart = (e)=>{
-        touchStartX.current = e.touches[0].clientX;
+        if (e.touches.length === 1) {
+            isPinch.current = false;
+            // 150ms 안에 두 번째 손가락이 추가되면 pinch로 간주
+            pinchTimeout.current = setTimeout(()=>{
+                if (e.touches.length === 1) {
+                    touchStartX.current = e.touches[0].clientX;
+                }
+            }, 150);
+        }
+        if (e.touches.length >= 2) {
+            isPinch.current = true;
+            if (pinchTimeout.current) clearTimeout(pinchTimeout.current);
+        }
     };
+    // 터치 이동
     const handleTouchMove = (e)=>{
-        touchEndX.current = e.touches[0].clientX;
+        if (e.touches.length === 1 && !isPinch.current) {
+            touchEndX.current = e.touches[0].clientX;
+        }
     };
+    // 터치 종료
     const handleTouchEnd = ()=>{
-        if (scale > 1) return; // 🔒 확대 중일 땐 스와이프 금지
+        if (isPinch.current || scale > 1.01) return;
         const diff = touchStartX.current - touchEndX.current;
         if (Math.abs(diff) > 50) {
             if (diff > 0) handleNext();
             else handlePrev();
         }
-        // 초기화
         touchStartX.current = 0;
         touchEndX.current = 0;
     };
@@ -702,7 +720,7 @@ function PhotoGalleryGrid() {
                         children: "PHOTO GALLERY"
                     }, void 0, false, {
                         fileName: "[project]/src/components/PhotoGallery.tsx",
-                        lineNumber: 92,
+                        lineNumber: 113,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -710,13 +728,13 @@ function PhotoGalleryGrid() {
                         children: "PHOTO GALLERY"
                     }, void 0, false, {
                         fileName: "[project]/src/components/PhotoGallery.tsx",
-                        lineNumber: 95,
+                        lineNumber: 116,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/PhotoGallery.tsx",
-                lineNumber: 91,
+                lineNumber: 112,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -737,17 +755,17 @@ function PhotoGalleryGrid() {
                             priority: idx < 3
                         }, void 0, false, {
                             fileName: "[project]/src/components/PhotoGallery.tsx",
-                            lineNumber: 108,
+                            lineNumber: 129,
                             columnNumber: 13
                         }, this)
                     }, idx, false, {
                         fileName: "[project]/src/components/PhotoGallery.tsx",
-                        lineNumber: 100,
+                        lineNumber: 121,
                         columnNumber: 11
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/src/components/PhotoGallery.tsx",
-                lineNumber: 98,
+                lineNumber: 119,
                 columnNumber: 7
             }, this),
             photos.length > 9 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -759,7 +777,7 @@ function PhotoGalleryGrid() {
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/PhotoGallery.tsx",
-                lineNumber: 122,
+                lineNumber: 143,
                 columnNumber: 9
             }, this),
             selectedIndex !== null && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -775,12 +793,12 @@ function PhotoGalleryGrid() {
                             size: 28
                         }, void 0, false, {
                             fileName: "[project]/src/components/PhotoGallery.tsx",
-                            lineNumber: 141,
+                            lineNumber: 162,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/PhotoGallery.tsx",
-                        lineNumber: 137,
+                        lineNumber: 158,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -790,12 +808,12 @@ function PhotoGalleryGrid() {
                             size: 36
                         }, void 0, false, {
                             fileName: "[project]/src/components/PhotoGallery.tsx",
-                            lineNumber: 148,
+                            lineNumber: 169,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/PhotoGallery.tsx",
-                        lineNumber: 144,
+                        lineNumber: 165,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -805,12 +823,12 @@ function PhotoGalleryGrid() {
                             size: 36
                         }, void 0, false, {
                             fileName: "[project]/src/components/PhotoGallery.tsx",
-                            lineNumber: 155,
+                            lineNumber: 176,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/PhotoGallery.tsx",
-                        lineNumber: 151,
+                        lineNumber: 172,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -829,24 +847,24 @@ function PhotoGalleryGrid() {
                             draggable: false
                         }, void 0, false, {
                             fileName: "[project]/src/components/PhotoGallery.tsx",
-                            lineNumber: 166,
+                            lineNumber: 187,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/PhotoGallery.tsx",
-                        lineNumber: 158,
+                        lineNumber: 179,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/PhotoGallery.tsx",
-                lineNumber: 131,
+                lineNumber: 152,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/PhotoGallery.tsx",
-        lineNumber: 90,
+        lineNumber: 111,
         columnNumber: 5
     }, this);
 }
@@ -1432,13 +1450,13 @@ const BusNoticeSection = ()=>{
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                         className: "font-semibold",
-                        children: "운행회사"
+                        children: "차량번호"
                     }, void 0, false, {
                         fileName: "[project]/src/components/BusNoticeSection.tsx",
                         lineNumber: 18,
                         columnNumber: 9
                     }, this),
-                    " : 송광관광버스",
+                    " : 70사1049",
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                         fileName: "[project]/src/components/BusNoticeSection.tsx",
                         lineNumber: 19,
@@ -1446,10 +1464,24 @@ const BusNoticeSection = ()=>{
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                         className: "font-semibold",
-                        children: "출발시간"
+                        children: "기사님 연락처"
                     }, void 0, false, {
                         fileName: "[project]/src/components/BusNoticeSection.tsx",
                         lineNumber: 20,
+                        columnNumber: 9
+                    }, this),
+                    " : 010-6247-2474",
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
+                        fileName: "[project]/src/components/BusNoticeSection.tsx",
+                        lineNumber: 21,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                        className: "font-semibold",
+                        children: "출발시간"
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/BusNoticeSection.tsx",
+                        lineNumber: 22,
                         columnNumber: 9
                     }, this),
                     " : 오전 8시 30분"
@@ -1464,7 +1496,7 @@ const BusNoticeSection = ()=>{
                 children: "※ 전세버스를 이용하실 분들은 탑승인원 파악을 위해 사전에 연락주시면 감사하겠습니다"
             }, void 0, false, {
                 fileName: "[project]/src/components/BusNoticeSection.tsx",
-                lineNumber: 22,
+                lineNumber: 24,
                 columnNumber: 7
             }, this)
         ]

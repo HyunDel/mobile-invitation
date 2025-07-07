@@ -15,7 +15,9 @@ const BusNoticeSection = () => {
         <span className='font-semibold'>탑승장소</span> : 태양광주차장
         (광주광역시 서구 치평동 1154번지 JS웨딩홀 옆)
         <br />
-        <span className='font-semibold'>운행회사</span> : 송광관광버스
+        <span className='font-semibold'>차량번호</span> : 70사1049
+        <br />
+        <span className='font-semibold'>기사님 연락처</span> : 010-6247-2474
         <br />
         <span className='font-semibold'>출발시간</span> : 오전 8시 30분
       </p>
